@@ -3,7 +3,7 @@ type: source
 id: incident-response-plan
 title: Incident Response Plan
 description: "Reference document defining severity levels, response procedures, and escalation paths for production incidents"
-tags: [Production]
+tags: [Production, quality:security, utility:classification]
 connections: []
 ---
 

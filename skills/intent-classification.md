@@ -3,7 +3,7 @@ type: skill
 id: intent-classification
 title: Intent Classification
 description: "Analyses text input and classifies it into intent categories"
-tags: [Tested]
+tags: [Tested, utility:classification]
 connections:
   - target: llm-service
     type: runs_on

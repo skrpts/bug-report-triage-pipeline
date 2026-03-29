@@ -3,7 +3,7 @@ type: workflow
 id: bug-report-triage-pipeline
 title: Bug Report Triage Pipeline
 description: "Classifies incoming bug reports, extracts structured details, and triages by severity"
-tags: [Production]
+tags: [Production, utility:classification]
 connections:
   - target: intent-classification
     type: uses
