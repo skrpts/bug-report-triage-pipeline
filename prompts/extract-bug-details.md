@@ -3,7 +3,7 @@ type: prompt
 id: extract-bug-details
 title: Extract Bug Details
 description: "Guides structured data extraction for bug-report-specific fields"
-tags: [Production, utility:classification, utility:extraction]
+tags: [Production, Automation]
 connections:
   - target: structured-data-extraction
     type: derived_from

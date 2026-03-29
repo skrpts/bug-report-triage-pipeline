@@ -3,7 +3,7 @@ type: prompt
 id: bug-report-triage
 title: Bug Report Triage
 description: "Combines classified intent, extracted details, and incident response guidelines to assign severity and triage actions"
-tags: [Production, quality:security, utility:classification]
+tags: [Production, Automation, Risk]
 connections:
   - target: intent-classification
     type: derived_from
