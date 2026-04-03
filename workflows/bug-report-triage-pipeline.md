@@ -15,6 +15,12 @@ connections:
     type: uses
   - target: llm-service
     type: runs_on
+  - target: format-conversion
+    type: uses
+  - target: pii-masking
+    type: uses
+  - target: defang-content
+    type: uses
 ---
 
 ## Overview
