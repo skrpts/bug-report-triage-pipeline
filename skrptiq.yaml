@@ -1,7 +1,7 @@
 name: bug-report-triage-pipeline
 display_name: "Bug Report Triage Pipeline"
 description: "Classifies incoming bug reports, extracts structured details, and triages by severity using incident response guidelines"
-version: "1.0.4"
+version: "1.0.5"
 engine: ">=0.1.0"
 author:
   name: "skrptiq"
@@ -22,11 +22,11 @@ requires:
   data_handling:
     - "pii"
 contents:
-  skills: 3
+  skills: 2
   prompts: 2
   workflows: 1
   services: 1
   sources: 1
   documents: 0
   assets: 0
-  total: 8
+  total: 7
