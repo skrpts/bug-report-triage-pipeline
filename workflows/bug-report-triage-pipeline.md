@@ -9,10 +9,6 @@ connections:
     type: uses
   - target: structured-data-extraction
     type: uses
-  - target: bug-report-triage
-    type: uses
-  - target: extract-bug-details
-    type: uses
   - target: llm-service
     type: runs_on
   - target: format-conversion
