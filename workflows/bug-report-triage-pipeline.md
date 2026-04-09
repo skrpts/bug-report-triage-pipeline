@@ -33,7 +33,7 @@ The raw report text is passed as `{{input.bug_report}}`.
 
 ### Stage 2: Extract Structured Details
 
-Using `{{steps.classify-intent.output}}` to confirm the report is a valid bug, invoke the **structured-data-extraction** skill with the **extract-bug-details** prompt. This stage pulls out key fields from the freeform text:
+Using `{{steps.Classify Intent.output}}` to confirm the report is a valid bug, invoke the **structured-data-extraction** skill with the **extract-bug-details** prompt. This stage pulls out key fields from the freeform text:
 
 - Affected component or module
 - Steps to reproduce
@@ -42,18 +42,18 @@ Using `{{steps.classify-intent.output}}` to confirm the report is a valid bug, i
 - Frequency and reproducibility
 - Any attached logs or screenshots referenced
 
-The extraction result is available as `{{steps.extract-details.output}}`.
+The extraction result is available as `{{steps.Structured Data Extraction.output}}`.
 
 ### Stage 3: Severity Assignment and Triage
 
-Combine `{{steps.classify-intent.output}}` and `{{steps.extract-details.output}}` with the **incident-response-plan** source to determine the appropriate severity level (P1 through P4). The triage logic considers:
+Combine `{{steps.Classify Intent.output}}` and `{{steps.Structured Data Extraction.output}}` with the **incident-response-plan** source to determine the appropriate severity level (P1 through P4). The triage logic considers:
 
 - User impact scope (single user vs. widespread)
 - Whether a workaround exists
 - Data integrity or security implications
 - Service availability impact
 
-The final triage decision is available as `{{steps.assign-severity.output}}`.
+The final triage decision is available as `{{steps.Severity Assignment.output}}`.
 
 ## Output
 

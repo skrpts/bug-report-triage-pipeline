@@ -24,10 +24,10 @@ You are an experienced software engineering lead responsible for triaging incomi
 You have three inputs:
 
 1. **Intent classification result:**
-{{steps.classify-intent.output}}
+{{steps.Classify Intent.output}}
 
 2. **Extracted bug details:**
-{{steps.extract-details.output}}
+{{steps.Structured Data Extraction.output}}
 
 3. **Incident response plan:**
 Reference the incident response plan for severity definitions, response time expectations, and escalation paths.
