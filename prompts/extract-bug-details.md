@@ -4,6 +4,13 @@ id: extract-bug-details
 title: Extract Bug Details
 description: "Guides structured data extraction for bug-report-specific fields"
 tags: [Production, Automation]
+inputs:
+  bug_report:
+    label: "Bug Report"
+    description: "The raw bug report as submitted by the user"
+    example: "Login page crashes on Safari 17 when using SSO. Console shows TypeError."
+    required: true
+    type: text
 connections:
   - target: structured-data-extraction
     type: derived_from
