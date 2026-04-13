@@ -22,16 +22,12 @@ execution:
     step_type: "synthesis"
   - skill: "structured-data-extraction"
     step_type: "synthesis"
-    input_from: "intent-classification"
   - skill: "format-conversion"
     step_type: "content"
-    input_from: "structured-data-extraction"
   - skill: "pii-masking"
     step_type: "content"
-    input_from: "format-conversion"
   - skill: "defang-content"
     step_type: "content"
-    input_from: "pii-masking"
 ---
 
 ## Overview
