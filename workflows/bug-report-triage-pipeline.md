@@ -17,6 +17,13 @@ connections:
     type: uses
   - target: defang-content
     type: uses
+output_step: "structured-data-extraction"
+composite_steps:
+  - "intent-classification"
+  - "structured-data-extraction"
+  - "format-conversion"
+  - "pii-masking"
+  - "defang-content"
 execution:
   - skill: "intent-classification"
     step_type: "synthesis"
