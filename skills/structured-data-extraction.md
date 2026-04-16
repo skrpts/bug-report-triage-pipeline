@@ -4,6 +4,12 @@ id: structured-data-extraction
 title: Structured Data Extraction
 description: "Extracts structured fields and data points from unstructured text"
 tags: [Tested, Automation]
+context_params:
+  extraction_fields:
+    label: "Fields to Extract"
+    description: "The specific fields or data points to extract"
+    default: ""
+    required: true
 connections:
   - target: llm-service
     type: runs_on

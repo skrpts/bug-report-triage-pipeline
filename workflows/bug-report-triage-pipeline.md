@@ -29,6 +29,8 @@ execution:
     step_type: "synthesis"
   - skill: "structured-data-extraction"
     step_type: "synthesis"
+    context:
+      extraction_fields: ""
   - skill: "format-conversion"
     step_type: "content"
   - skill: "pii-masking"
