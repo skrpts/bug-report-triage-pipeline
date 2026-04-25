@@ -27,6 +27,7 @@ composite_steps:
 execution:
   - skill: "intent-classification"
     step_type: "synthesis"
+    prompt: "classify-bug-intent"
   - skill: "structured-data-extraction"
     step_type: "synthesis"
     context:
