@@ -29,6 +29,7 @@ execution:
     step_type: "synthesis"
     prompt: "classify-bug-intent"
   - skill: "structured-data-extraction"
+    prompt: "bug-report-triage"
     step_type: "synthesis"
     context:
       extraction_fields: ""
