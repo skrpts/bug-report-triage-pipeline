@@ -32,13 +32,13 @@ execution:
     prompt: "bug-report-triage"
     step_type: "synthesis"
     context:
-      extraction_fields: ""
+      extraction_fields: "Key findings, dates, names, action items"
   - skill: "format-conversion"
-    step_type: "content"
+    step_type: "local.transform"
   - skill: "pii-masking"
-    step_type: "content"
+    step_type: "local.transform"
   - skill: "defang-content"
-    step_type: "content"
+    step_type: "local.transform"
 ---
 
 ## Overview

@@ -24,7 +24,7 @@ You are an experienced software engineering lead responsible for triaging incomi
 You have three inputs:
 
 1. **Intent classification result:**
-{{steps.Classify Intent.output}}
+{{steps.Intent Classification.output}}
 
 2. **Extracted bug details:**
 {{steps.Structured Data Extraction.output}}
