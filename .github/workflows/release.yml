@@ -118,51 +118,51 @@ jobs:
           console.log("Security block written: " + scan.status);
           '
 
-      - name: Sign the skrpt
+      - name: Sign bundle
+        # Per BUNDLE-INTEGRITY-CONTRACT v1.0.3 §4.3-§4.4:
+        # Single canonical invocation. No inline signing logic.
+        # Engine's SignBundle handles file collection, manifest strip,
+        # checksum, signature payload, and manifest update.
         env:
-          SIGNING_PRIVATE_KEY: ${{ secrets.SIGNING_PRIVATE_KEY }}
+          SIGNING_KEY: ${{ secrets.SIGNING_PRIVATE_KEY }}
+        run: skrptiq sign -key-env SIGNING_KEY .
+
+      - name: Extract release notes
+        id: notes
         run: |
-          echo "$SIGNING_PRIVATE_KEY" > /tmp/signing.key
-          node -e '
-          const { createHash, sign, createPrivateKey } = require("node:crypto");
-          const { readFileSync, writeFileSync, readdirSync } = require("node:fs");
-          const { join, relative } = require("node:path");
-          const dir = ".";
-          const keyPem = readFileSync("/tmp/signing.key", "utf-8");
-          const privateKey = createPrivateKey(keyPem);
-          const tier = "official";
-          function collectFiles(d, base) {
-            base = base || d; const entries = readdirSync(d, { withFileTypes: true }); const files = [];
-            for (const e of entries) { const fp = join(d, e.name); if (e.name.startsWith(".") || e.name === "node_modules") continue; if (e.isDirectory()) files.push(...collectFiles(fp, base)); else if (e.isFile()) files.push(relative(base, fp)); }
-            return files;
-          }
-          const allFiles = collectFiles(dir);
-          const nonManifest = allFiles.filter(f => f !== "skrptiq.yaml");
-          const manifest = readFileSync(join(dir, "skrptiq.yaml"), "utf-8");
-          const clean = manifest
-            .replace(/\n*integrity:[\s\S]*?(?=\n[a-z]|\n*$)/, "")
-            .replace(/\n*trust:[\s\S]*?(?=\n[a-z]|\n*$)/, "")
-            .trimEnd() + "\n";
-          const hash = createHash("sha256");
-          hash.update("skrptiq.yaml"); hash.update(clean);
-          for (const f of [...nonManifest].sort()) { hash.update(f.split(/[\\/]/).join("/")); hash.update(readFileSync(join(dir, f))); }
-          const checksum = hash.digest("hex");
-          const sig = sign(null, Buffer.from(checksum), privateKey).toString("base64");
-          const now = new Date().toISOString();
-          let out = clean.trimEnd() + "\n";
-          out += "\nintegrity:\n";
-          out += "  checksum: \"sha256:" + checksum + "\"\n";
-          out += "  signature: \"ed25519:" + sig + "\"\n";
-          out += "  signed_at: \"" + now + "\"\n";
-          out += "  signed_by: \"hub.skrptiq.ai\"\n";
-          out += "\ntrust:\n";
-          out += "  tier: \"" + tier + "\"\n";
-          out += "  reviewed: true\n";
-          out += "  reviewed_at: \"" + now + "\"\n";
-          writeFileSync(join(dir, "skrptiq.yaml"), out);
-          console.log("Signed: sha256:" + checksum.slice(0, 16) + "...");
-          '
-          rm /tmp/signing.key
+          VERSION="${{ steps.meta.outputs.version }}"
+          if [ -f RELEASE_NOTES.md ]; then
+            NOTES=$(node -e "
+              const fs = require('fs');
+              const content = fs.readFileSync('RELEASE_NOTES.md', 'utf-8');
+              const version = '${VERSION}'.replace(/\./g, '\\\\.');
+              const re = new RegExp('## v' + version + '\\\\s*\\\\n([\\\\s\\\\S]*?)(?=\\\\n## v|$)');
+              const m = content.match(re);
+              console.log(m ? m[1].trim() : '');
+            ")
+          else
+            NOTES=""
+          fi
+          echo "$NOTES" > /tmp/release-notes.txt
+          if [ -n "$NOTES" ]; then
+            echo "has_notes=true" >> "$GITHUB_OUTPUT"
+            echo "Release notes found for v${VERSION}"
+          else
+            echo "has_notes=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::No release notes found for v${VERSION}"
+          fi
+
+      - name: Enforce release notes for major/minor
+        if: steps.notes.outputs.has_notes == 'false'
+        run: |
+          VERSION="${{ steps.meta.outputs.version }}"
+          PATCH=$(echo "$VERSION" | cut -d. -f3)
+          if [ "$PATCH" = "0" ]; then
+            echo "::error::Release notes required for major/minor version v${VERSION}. Add a ## v${VERSION} section to RELEASE_NOTES.md"
+            exit 1
+          else
+            echo "::warning::No release notes for patch v${VERSION} — continuing with placeholder"
+          fi
 
       - name: Create release zip
         run: |
@@ -177,7 +177,8 @@ jobs:
         with:
           name: v${{ steps.meta.outputs.version }}
           tag_name: ${{ github.ref_name }}
-          generate_release_notes: true
+          body_path: /tmp/release-notes.txt
+          generate_release_notes: ${{ steps.notes.outputs.has_notes == 'false' }}
           files: ${{ env.zip_name }}
 
       - name: Post security report to Hub API
@@ -239,7 +240,15 @@ jobs:
             console.log(match ? match[1] : '');
           ")
 
-          PAYLOAD=$(node -e "console.log(JSON.stringify({version:'${VERSION}',git_commit:'${GITHUB_SHA}',release_notes:'Automated release v${VERSION}',content_hash:'${CONTENT_HASH}'}))")
+          PAYLOAD=$(node -e "
+            const notes = require('fs').readFileSync('/tmp/release-notes.txt','utf-8').trim();
+            console.log(JSON.stringify({
+              version:'${VERSION}',
+              git_commit:'${GITHUB_SHA}',
+              release_notes: notes || 'Release notes unavailable for this version.',
+              content_hash:'${CONTENT_HASH}'
+            }));
+          ")
 
           HTTP_CODE=$(curl -sf -o /dev/null -w "%{http_code}" \
             -X POST "${HUB_API_URL}/api/skrpts/by-id/${SKRPT_ID}/versions" \

@@ -1,7 +1,9 @@
+# --- Identity ---
+id: "89568a9d-03db-4daf-abaa-361816ffe664"
 name: bug-report-triage-pipeline
 display_name: "Bug Report Triage Pipeline"
 description: "Classifies incoming bug reports, extracts structured details, and triages by severity using incident response guidelines"
-version: "1.1.14"
+version: "1.1.22"
 engine: ">=0.1.0"
 author:
   name: "skrptiq"
@@ -10,11 +12,11 @@ licence: "MIT"
 repository: "https://github.com/skrpts/bug-report-triage-pipeline"
 category: "developer"
 tags:
+  - "automation"
   - "bug-tracking"
-  - "triage"
   - "developer"
   - "support"
-  - "automation"
+  - "triage"
 requires:
   services:
     - "llm-service"
