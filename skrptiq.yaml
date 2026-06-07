@@ -3,7 +3,7 @@ id: "89568a9d-03db-4daf-abaa-361816ffe664"
 name: bug-report-triage-pipeline
 display_name: "Bug Report Triage Pipeline"
 description: "Classifies incoming bug reports, extracts structured details, and triages by severity using incident response guidelines"
-version: "1.1.22"
+version: "1.1.23"
 engine: ">=0.1.0"
 author:
   name: "skrptiq"
@@ -17,6 +17,32 @@ tags:
   - "developer"
   - "support"
   - "triage"
+dependencies:
+  - id: "553c54e1-e570-4a07-b95d-51933c619dbc"
+    name: "defang-content"
+    version: 1.0.1
+    checksum: "sha256:45cb59641c6d90b14ad92530f49178bb516f2edf1b67cf009457732ea510cb25"
+  - id: "6fbc6b50-b4c9-465f-b208-1fc453df76b9"
+    name: "format-conversion"
+    version: 1.0.1
+    checksum: "sha256:c1b6c9e681180292ca223c66068766a887579c1f511fa28829c1a820930a3648"
+  - id: "8fcdda7e-2acd-4702-983a-e3687d231d6e"
+    name: "intent-classification"
+    version: 1.0.1
+    checksum: "sha256:c4e340952af3e60893fa689acc9eefcd218296594eb121587fe3d771e1cf7840"
+  - id: "fcab9536-a13e-49c9-b0c3-bb3097682e69"
+    name: "llm-service"
+    version: 1.0.1
+    checksum: "sha256:455c8bf590a9426d830bffd1a741afa058149bc29c58186c34d0d8699bea4bda"
+  - id: "1bfde5c8-fdb1-4d13-ac87-0076e5b4c561"
+    name: "pii-masking"
+    version: 1.0.1
+    checksum: "sha256:2bc7d59d9f154dfdc0169d5cff33d76f29c113fd06fa4731ea6feb110600da92"
+  - id: "a611e3ad-f49d-41fb-a380-f97289f51d12"
+    name: "structured-data-extraction"
+    version: 1.0.1
+    checksum: "sha256:c5ca3625360e310760683e9ff50ba7cc1c16291682fb4233f3b9019938e934fa"
+
 requires:
   services:
     - "llm-service"
@@ -25,11 +51,11 @@ requires:
     - "pii"
 
 contents:
-  skills: 5
+  skills: 0
   prompts: 3
   workflows: 1
-  services: 1
+  services: 0
   sources: 1
   documents: 0
   assets: 0
-  total: 11
+  total: 5
