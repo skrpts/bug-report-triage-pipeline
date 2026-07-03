@@ -3,7 +3,7 @@ id: "89568a9d-03db-4daf-abaa-361816ffe664"
 name: bug-report-triage-pipeline
 display_name: "Bug Report Triage Pipeline"
 description: "Classifies incoming bug reports, extracts structured details, and triages by severity using incident response guidelines"
-version: "1.1.23"
+version: "1.1.24"
 engine: ">=0.1.0"
 author:
   name: "skrptiq"
@@ -59,3 +59,17 @@ contents:
   documents: 0
   assets: 0
   total: 5
+
+security:
+  status: "pass"
+  scanned_at: "2026-07-03T10:59:12.049Z"
+  scanner_version: "3.3.0"
+  syntactic: "pass"
+  structural: "pass"
+  detected:
+    services: ["llm-service"]
+    permissions: []
+    data_handling: ["pii"]
+  undeclared: []
+  warnings: []
+  report_url: "https://hub.skrptiq.ai/skrpts/bug-report-triage-pipeline/security"

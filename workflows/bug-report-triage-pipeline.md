@@ -28,17 +28,22 @@ execution:
   - skill: "intent-classification"
     step_type: "synthesis"
     prompt: "classify-bug-intent"
+    output: { name: "classification", type: "text" }
   - skill: "structured-data-extraction"
     prompt: "bug-report-triage"
     step_type: "synthesis"
+    output: { name: "triage_data", type: "json" }
     context:
       extraction_fields: "Key findings, dates, names, action items"
   - skill: "format-conversion"
     step_type: "local.transform"
+    output: { name: "formatted_report", type: "text" }
   - skill: "pii-masking"
     step_type: "local.transform"
+    output: { name: "masked_report", type: "text" }
   - skill: "defang-content"
     step_type: "local.transform"
+    output: { name: "sanitised_report", type: "text" }
 ---
 
 ## Overview
