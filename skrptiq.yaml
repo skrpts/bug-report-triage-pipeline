@@ -3,7 +3,7 @@ id: "89568a9d-03db-4daf-abaa-361816ffe664"
 name: bug-report-triage-pipeline
 display_name: "Bug Report Triage Pipeline"
 description: "Classifies incoming bug reports, extracts structured details, and triages by severity using incident response guidelines"
-version: "1.1.24"
+version: "1.1.25"
 engine: ">=0.1.0"
 author:
   name: "skrptiq"
@@ -20,20 +20,20 @@ tags:
 dependencies:
   - id: "553c54e1-e570-4a07-b95d-51933c619dbc"
     name: "defang-content"
-    version: 1.0.1
-    checksum: "sha256:45cb59641c6d90b14ad92530f49178bb516f2edf1b67cf009457732ea510cb25"
+    version: 1.0.3
+    checksum: "sha256:b437e5f381c36da939e6f9cf828d832526700715230508d1966c24e1b0ca908a"
   - id: "6fbc6b50-b4c9-465f-b208-1fc453df76b9"
     name: "format-conversion"
-    version: 1.0.1
-    checksum: "sha256:c1b6c9e681180292ca223c66068766a887579c1f511fa28829c1a820930a3648"
+    version: 1.0.3
+    checksum: "sha256:0bcd241bb62e8872f5054de7cecfd3b029efa0f20ba4003572771804df5b8d60"
   - id: "8fcdda7e-2acd-4702-983a-e3687d231d6e"
     name: "intent-classification"
     version: 1.0.1
     checksum: "sha256:c4e340952af3e60893fa689acc9eefcd218296594eb121587fe3d771e1cf7840"
   - id: "fcab9536-a13e-49c9-b0c3-bb3097682e69"
     name: "llm-service"
-    version: 1.0.1
-    checksum: "sha256:455c8bf590a9426d830bffd1a741afa058149bc29c58186c34d0d8699bea4bda"
+    version: 1.0.3
+    checksum: "sha256:18783015383c041de9c3fdaa191b79172ab534348448c20c74f9a967ab4dd917"
   - id: "1bfde5c8-fdb1-4d13-ac87-0076e5b4c561"
     name: "pii-masking"
     version: 1.0.1
@@ -62,7 +62,7 @@ contents:
 
 security:
   status: "pass"
-  scanned_at: "2026-07-03T15:49:02.955Z"
+  scanned_at: "2026-07-16T20:23:03.392Z"
   scanner_version: "3.3.0"
   syntactic: "pass"
   structural: "pass"

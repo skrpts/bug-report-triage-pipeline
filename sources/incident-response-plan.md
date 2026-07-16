@@ -9,7 +9,7 @@ connections: []
 
 ## Purpose
 
-This document defines the severity classification system, response time expectations, escalation procedures, and communication templates used during bug triage and incident response. All triage decisions should reference these definitions to ensure consistency across the organisation.
+This document defines the severity classification system, response time expectations, escalation procedures, and communication templates used during bug triage and incident response. All triage decisions should reference these definitions to ensure consistency across the organization.
 
 ## Severity Levels
 
@@ -58,7 +58,7 @@ This document defines the severity classification system, response time expectat
 - Tooltip text displays the wrong message on the settings page
 - Sorting by date on the dashboard occasionally shows items out of order
 - PDF export includes an extra blank page at the end
-- Dark mode colours are incorrect on the notifications panel
+- Dark mode colors are incorrect on the notifications panel
 
 **Escalation:** Assigned to the relevant team's backlog. If not picked up within 3 business days, the team lead reviews and reprioritises.
 
@@ -86,7 +86,7 @@ When determining the severity of a bug report, evaluate these factors in order:
 
 2. **Service availability** — Is the affected feature entirely unusable? If the core product is down, P1. If a major feature is down, P2. If a minor feature is down with a workaround, P3.
 
-3. **User impact scope** — How many users are affected? Organisation-wide impact with no workaround is P1. A significant segment (e.g., all users on a specific plan or platform) is P2. A small subset or edge case is P3 or P4.
+3. **User impact scope** — How many users are affected? Organization-wide impact with no workaround is P1. A significant segment (e.g., all users on a specific plan or platform) is P2. A small subset or edge case is P3 or P4.
 
 4. **Workaround availability** — Does a reasonable workaround exist? "Reasonable" means a non-technical user can follow it without significant effort. If the workaround is complex or fragile, treat it as if no workaround exists.
 

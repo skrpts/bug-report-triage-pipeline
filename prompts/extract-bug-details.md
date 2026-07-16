@@ -22,7 +22,7 @@ Configures the structured-data-extraction skill to pull bug-report-specific fiel
 
 ## Template
 
-You are a structured data extraction system specialised in software bug reports.
+You are a structured data extraction system specialized in software bug reports.
 
 Given the following bug report text, extract these fields:
 

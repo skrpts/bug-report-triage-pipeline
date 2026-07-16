@@ -54,7 +54,7 @@ This workflow processes incoming bug reports through a three-stage pipeline. It 
 
 ### Stage 1: Classify Report Intent
 
-Invoke the **intent-classification** skill using the **bug-report-triage** prompt to analyse the incoming report. The classifier determines whether the submission is a genuine bug report, a feature request, a support question, or something else entirely. Reports that are not bugs receive a redirect recommendation rather than entering the triage queue.
+Invoke the **intent-classification** skill using the **bug-report-triage** prompt to analyze the incoming report. The classifier determines whether the submission is a genuine bug report, a feature request, a support question, or something else entirely. Reports that are not bugs receive a redirect recommendation rather than entering the triage queue.
 
 The raw report text is passed as `{{input.bug_report}}`.
 
@@ -64,7 +64,7 @@ Using `{{steps.Classify Intent.output}}` to confirm the report is a valid bug, i
 
 - Affected component or module
 - Steps to reproduce
-- Expected versus actual behaviour
+- Expected versus actual behavior
 - Environment details (OS, browser, version)
 - Frequency and reproducibility
 - Any attached logs or screenshots referenced
@@ -113,7 +113,7 @@ A structured triage report containing:
 Before running this workflow:
 
 1. **Paste the bug report text** — no external integrations are required. Simply provide the raw text of the bug report as submitted by the user.
-2. **Review the incident response plan** — the source document defines your organisation's severity levels and response expectations. Customise it to match your actual SLAs and team structure.
+2. **Review the incident response plan** — the source document defines your organization's severity levels and response expectations. Customize it to match your actual SLAs and team structure.
 
 No specific AI provider or API key is required beyond your configured skrptiq LLM provider.
 

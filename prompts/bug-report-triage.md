@@ -15,7 +15,7 @@ connections:
 
 ## Purpose
 
-Assigns a severity level and triage recommendation to a bug report by combining the classified intent, extracted structured details, and the organisation's incident response plan. This prompt drives the final stage of the pipeline, producing an actionable triage output that can be handed directly to the engineering team.
+Assigns a severity level and triage recommendation to a bug report by combining the classified intent, extracted structured details, and the organization's incident response plan. This prompt drives the final stage of the pipeline, producing an actionable triage output that can be handed directly to the engineering team.
 
 ## Template
 
@@ -49,7 +49,7 @@ A structured triage report containing:
 - **Intent:** Confirmed classification (bug / feature request / question / other)
 - **Severity:** P1, P2, P3, or P4 (or N/A if not a bug)
 - **Justification:** 2-3 sentences explaining why this severity was assigned
-- **Impact scope:** Single user / team / department / organisation-wide
+- **Impact scope:** Single user / team / department / organization-wide
 - **Workaround available:** Yes (with description) / No
 - **Recommended actions:** Immediate steps to take
 - **Assigned team:** Which team should own the fix
