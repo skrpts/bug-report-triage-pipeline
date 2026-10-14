@@ -3,7 +3,7 @@ id: "89568a9d-03db-4daf-abaa-361816ffe664"
 name: bug-report-triage-pipeline
 display_name: "Bug Report Triage Pipeline"
 description: "Classifies incoming bug reports, extracts structured details, and triages by severity using incident response guidelines"
-version: "1.1.25"
+version: "1.1.26"
 engine: ">=0.1.0"
 author:
   name: "skrptiq"
@@ -20,8 +20,8 @@ tags:
 dependencies:
   - id: "553c54e1-e570-4a07-b95d-51933c619dbc"
     name: "defang-content"
-    version: 1.0.3
-    checksum: "sha256:b437e5f381c36da939e6f9cf828d832526700715230508d1966c24e1b0ca908a"
+    version: 1.0.4
+    checksum: "sha256:d940534330380c57354621cb5f2e7dfd8f8d823b6ceabe583dbd4491114bcb10"
   - id: "6fbc6b50-b4c9-465f-b208-1fc453df76b9"
     name: "format-conversion"
     version: 1.0.3
@@ -62,7 +62,7 @@ contents:
 
 security:
   status: "pass"
-  scanned_at: "2026-07-16T20:23:03.392Z"
+  scanned_at: "2026-10-14T21:28:02.715Z"
   scanner_version: "3.3.0"
   syntactic: "pass"
   structural: "pass"

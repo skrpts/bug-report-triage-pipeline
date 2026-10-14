@@ -42,7 +42,8 @@ execution:
     step_type: "local.transform"
     output: { name: "masked_report", type: "text" }
   - skill: "defang-content"
-    step_type: "local.transform"
+    prompt: "defang-content"
+    step_type: "validation"
     output: { name: "sanitised_report", type: "text" }
 ---
 

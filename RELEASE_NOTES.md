@@ -1,5 +1,12 @@
 # Release Notes
 
+## v1.1.26
+GH#1067 — the content-sanitising step could not run. It now runs, and keeps all five of its protections.
+
+The defang step was declared with a step type the engine does not dispatch, so it failed instead of sanitising. It now runs the same way the code-review and documentation pipelines already run it, neutralising dangerous URLs, IP addresses and email addresses, wrapping code-execution patterns in warning markers, and flagging sensitive file paths.
+
+**This skrpt is still hidden from browse and search.** Its PII-masking step cannot run yet — it fails rather than processing anything unmasked, so nothing is mishandled, but the pipeline cannot complete. That needs a deterministic masking step the engine does not have yet (GH#1064). If you have it installed, keep it: the fix will reach you as a normal update when that lands.
+
 ## v1.1.25
 GH#845 — republish with American English (en-US) content, completing the source-only GH#805 flip that never reached the Hub. Copy only — no functional or behaviour change.
 
