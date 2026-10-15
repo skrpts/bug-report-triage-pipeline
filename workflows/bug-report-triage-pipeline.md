@@ -36,7 +36,10 @@ execution:
     context:
       extraction_fields: "Key findings, dates, names, action items"
   - skill: "format-conversion"
-    step_type: "local.transform"
+    prompt: "format-conversion"
+    step_type: "content"
+    context:
+      target_format: "markdown"
     output: { name: "formatted_report", type: "text" }
   - skill: "pii-masking"
     step_type: "local.transform"

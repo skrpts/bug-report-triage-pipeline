@@ -1,5 +1,12 @@
 # Release Notes
 
+## v1.1.27
+GH#1070 — the format-conversion step could not run. It now runs, and converts the triage data into a readable report.
+
+The step was declared with a step type the engine does not dispatch, so it failed instead of converting. It now runs the shared format-conversion skill the same way the code-review, documentation and sprint-wrapup pipelines already run it, with the target format declared on the step (`markdown`) rather than left for the skill to guess — the skill supports six formats, and this step needs the one that renders the triage report.
+
+**This skrpt is still hidden from browse and search.** Its PII-masking step cannot run yet — it fails rather than processing anything unmasked, so nothing is mishandled, but the pipeline cannot complete. That needs a deterministic masking step the engine does not have yet (GH#1064). It is now the only step still failing. If you have it installed, keep it: the fix will reach you as a normal update when that lands.
+
 ## v1.1.26
 GH#1067 — the content-sanitising step could not run. It now runs, and keeps all five of its protections.
 

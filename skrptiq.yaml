@@ -3,7 +3,7 @@ id: "89568a9d-03db-4daf-abaa-361816ffe664"
 name: bug-report-triage-pipeline
 display_name: "Bug Report Triage Pipeline"
 description: "Classifies incoming bug reports, extracts structured details, and triages by severity using incident response guidelines"
-version: "1.1.26"
+version: "1.1.27"
 engine: ">=0.1.0"
 author:
   name: "skrptiq"
@@ -24,8 +24,8 @@ dependencies:
     checksum: "sha256:d940534330380c57354621cb5f2e7dfd8f8d823b6ceabe583dbd4491114bcb10"
   - id: "6fbc6b50-b4c9-465f-b208-1fc453df76b9"
     name: "format-conversion"
-    version: 1.0.3
-    checksum: "sha256:0bcd241bb62e8872f5054de7cecfd3b029efa0f20ba4003572771804df5b8d60"
+    version: 1.0.4
+    checksum: "sha256:301a2d70a849ea7c36177406c1408018ae606dbfad3898556d3b5daa1d37676d"
   - id: "8fcdda7e-2acd-4702-983a-e3687d231d6e"
     name: "intent-classification"
     version: 1.0.1
@@ -62,7 +62,7 @@ contents:
 
 security:
   status: "pass"
-  scanned_at: "2026-10-14T21:28:02.715Z"
+  scanned_at: "2026-10-15T18:35:44.164Z"
   scanner_version: "3.3.0"
   syntactic: "pass"
   structural: "pass"
